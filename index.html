@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeibWeissman Civilization</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Title Screen -->
+<div id="title-screen">
+  <h1>LeibWeissman<br>Civilization</h1>
+  <p>
+    A 10-round card game. Draw buildings, units, and events each round.
+    Play your hand to gather resources — but barbarian threat grows every round.
+    Reach <strong>60 score</strong> to win.
+  </p>
+  <div class="tag-row">
+    <span class="tag tag-building">🏛 Buildings — gain resources</span>
+    <span class="tag tag-unit">⚔ Units — reduce threat &amp; add defense</span>
+    <span class="tag tag-event">📜 Events — make a choice</span>
+  </div>
+  <button class="choice-btn" onclick="dismissTitle()" style="font-size:1.1rem;padding:14px 28px;border-color:#c9a84c;color:#c9a84c;">
+    Begin
+  </button>
+</div>
+
+<!-- Resource Bar -->
+<div id="resource-bar">
+  <span id="round-display">Round 1 / 10</span>
+  <span class="res"><span class="res-icon">🪙</span><span class="res-val" id="res-gold">0</span></span>
+  <span class="res"><span class="res-icon">🌾</span><span class="res-val" id="res-food">0</span></span>
+  <span class="res"><span class="res-icon">✝</span><span class="res-val" id="res-faith">0</span></span>
+  <span class="res"><span class="res-icon">🔬</span><span class="res-val" id="res-science">0</span></span>
+  <span class="res"><span class="res-icon">🎭</span><span class="res-val" id="res-culture">0</span></span>
+  <span class="res"><span class="res-icon">🛡</span><span class="res-val" id="res-defense">0</span></span>
+  <span class="res res-threat"><span class="res-icon">⚔</span><span class="res-val" id="res-threat">0</span></span>
+  <span class="res res-score">Score: <span id="res-score">0</span></span>
+</div>
+
+<!-- Main -->
+<div id="main">
+  <div id="sidebar">
+    <h3>Event Log</h3>
+    <div id="log"></div>
+    <button id="end-turn-btn" onclick="endRound()">End Round</button>
+  </div>
+
+  <div id="play-area">
+    <div id="hand-info">Click a card to play it.</div>
+    <div id="hand"></div>
+  </div>
+</div>
+
+<!-- Event / Card-event Overlay -->
+<div id="overlay" class="hidden"></div>
+
+<!-- End Screen -->
+<div id="end-screen" class="hidden"></div>
+
+<script src="cards.js"></script>
+<script src="game.js"></script>
+<script>
+  function dismissTitle() {
+    document.getElementById('title-screen').classList.add('hidden');
+    startGame();
+  }
+</script>
+</body>
+</html>
